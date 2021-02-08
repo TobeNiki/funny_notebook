@@ -21,3 +21,28 @@ exports.code_post = function (code){
         });
     });
 };
+
+exports.text_post = function (text){
+    var options = {
+        url:"http://127.0.0.1:8000/text_to_bfcode",
+        method:"POST",
+        headers:{
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+        },
+        body:{'text':text},
+        json:true,
+    };
+    console.log(options)
+    return new Promise((resolve,reject) => {request(options)
+        .then((response) =>{
+            console.log(response);
+            resolve(response);
+        })
+        .catch((error) => {
+            console.log(error);
+            reject(error);
+        });
+    });
+};

@@ -90,22 +90,26 @@ class Create_Brainfuck_Code:
         self.bf_code += '>++++++++++++.'
 
     def create(self) -> str:
-        self.max_Decision()
-        self.decisive_decision()
-        self.m_decision()
-        self.plus_write()
-        self.for_write()
-        self.re_pointer2loop_counter()
-        self.round_up()
-        self.new_line()
+        if self.array != []:
+            self.max_Decision()
+            self.decisive_decision()
+            self.m_decision()
+            self.plus_write()
+            self.for_write()
+            self.re_pointer2loop_counter()
+            self.round_up()
+            self.new_line()
+        else:
+            pass
         return self.bf_code
 
 
 if __name__ == '__main__':
     bfCode = '+++++++++++++++++[>++++>+++++++>+++++++>++>++++>++>++++++>++++++>++++++>++++++>++>++++++>+++++++>+++<<<<<<<<<<<<<<-]>--.>--.>---.>--.>+++++.>--.>++++++.>+++.>+++++.>-.>--.>+++.>---.>-----.>++++++++++++.'
-    code = Create_Brainfuck_Code('But I like it.').create()
+    #code = Create_Brainfuck_Code('But I like it.').create()
+    code = Create_Brainfuck_Code('').create()
     print(code)
-    print("aaaa")
-    print(bfCode)
-    if bfCode == code:
-        print('ok')
+    #print("aaaa")
+    #print(bfCode)
+    #if bfCode == code:
+        #print('ok')

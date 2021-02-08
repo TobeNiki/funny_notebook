@@ -18,12 +18,25 @@ class Text(BaseModel):
     """
     text : str
 
+@app.get('/')
+async def hello():
+    return {"result":"hello"}
+
+
 @app.post('/bf_compiler')
 async def bf_code_compile(code : Code):
-    result = sourcecode_compiled(code.bf)
+    try:
+        result = sourcecode_compiled(code.bf)
+    except Exception as e:
+        print(e)
+        result = "error"
     return {"result":result}
 
 @app.post('/text_to_bfcode')
 async def text2bf(text : Text):
-    result = Create_Brainfuck_Code(text.text).create()
+    try:
+        result = Create_Brainfuck_Code(text.text).create()
+    except Exception as e:
+        print(e)
+        result = "error"
     return {"result":result}
