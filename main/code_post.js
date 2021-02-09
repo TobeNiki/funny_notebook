@@ -34,7 +34,6 @@ exports.text_post = function (text){
         body:{'text':text},
         json:true,
     };
-    console.log(options)
     return new Promise((resolve,reject) => {request(options)
         .then((response) =>{
             console.log(response);

@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
-
+const helmet = require('helmet');
 const http = require('http').Server(app);
 const PORT = process.env.PORT || 3000;
-
 const io = require('socket.io')(http);
 
 const mongo = require('mongodb');
@@ -14,6 +13,7 @@ const apiclient = require('./code_post.js')
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(helmet());
 
 app.get('/', function(req, res){
     var titles = "Funny Notebook";
