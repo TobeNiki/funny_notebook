@@ -38,3 +38,27 @@ def test_text2bf():
     )
     assert response.status_code == 200
     assert response.json() == {'result':'+++++++++++++++++[>++++>+++++++>+++++++>++>++++>++>++++++>++++++>++++++>++++++>++>++++++>+++++++>+++<<<<<<<<<<<<<<-]>--.>--.>---.>--.>+++++.>--.>++++++.>+++.>+++++.>-.>--.>+++.>---.>-----.>++++++++++++.'}
+
+def test_text2bf_none():
+    response = client.post(
+        '/text_to_bfcode',
+        headers = {'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'},
+        json={'text':''}
+    )
+    assert response.status_code == 200
+    assert response.json() == {'result':''}
+
+def test_text2bf_jpn_roma():
+    jpn_roma = 'ぴくとはうす'
+    result = "++++++++++++++++++++++[>+++++>+++++>+++++>+++++>+++++>+++++>+++++>++++>+++++>+++++>+++++<<<<<<<<<<<-]>++.>-----.>---.>+++++++.>++++++.>+.>------.>+++++++++.>+++++++.>+++++.>+++++++.>++++++++++++."
+    response = client.post(
+         '/text_to_bfcode',
+        headers = {'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'},
+        json={'text':jpn_roma}
+    )
+    assert response.status_code == 200
+    assert response.json() == {'result':result}
