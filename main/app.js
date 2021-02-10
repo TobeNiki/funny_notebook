@@ -13,6 +13,10 @@ const apiclient = require('./code_post.js')
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+/* 
+jquery,bootstrap等のライブラリはpublic/libraryに
+min.js,min.js.mapファイルを置く形で利用(gitignoreで追跡対象外に指定)
+*/
 app.use(helmet());
 
 app.get('/', function(req, res){
