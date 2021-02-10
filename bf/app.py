@@ -42,7 +42,7 @@ async def text2bf(text : Text):
             input_text = jpn2roman.do(text.text)
         else:
             input_text = text.text
-        result = Create_Brainfuck_Code(input_text).create()
+        result = Create_Brainfuck_Code().execution(input_text)
     except Exception as e:
         print(e)
         result = "error"

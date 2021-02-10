@@ -3,10 +3,8 @@ import math
 
 class Create_Brainfuck_Code:
     
-    def  __init__(self, text:str):
+    def  __init__(self):
         self.array = []
-        for char in text:
-            self.array.append(ord(char))
         self.MAX = 0
         self.list_ = []
         self.m = 10000000000
@@ -89,7 +87,9 @@ class Create_Brainfuck_Code:
     def new_line(self):
         self.bf_code += '>++++++++++++.'
 
-    def create(self) -> str:
+    def execution(self,text:str) -> str:
+        for char in text:
+            self.array.append(ord(char))
         if self.array != []:
             self.max_Decision()
             self.decisive_decision()
@@ -99,15 +99,13 @@ class Create_Brainfuck_Code:
             self.re_pointer2loop_counter()
             self.round_up()
             self.new_line()
-        else:
-            pass
         return self.bf_code
 
 
 if __name__ == '__main__':
     bfCode = '+++++++++++++++++[>++++>+++++++>+++++++>++>++++>++>++++++>++++++>++++++>++++++>++>++++++>+++++++>+++<<<<<<<<<<<<<<-]>--.>--.>---.>--.>+++++.>--.>++++++.>+++.>+++++.>-.>--.>+++.>---.>-----.>++++++++++++.'
     #code = Create_Brainfuck_Code('But I like it.').create()
-    code = Create_Brainfuck_Code('').create()
+    code = Create_Brainfuck_Code().execution('aaaa')
     print(code)
     #print("aaaa")
     #print(bfCode)
