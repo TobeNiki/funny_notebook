@@ -1,9 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from brainfu_k_compiler import sourcecode_compiled
 from createBrainFuck import Create_Brainfuck_Code
 from jpn2roma import JPN2Roman
 from starlette.requests import Request
+import time
 
 app = FastAPI()
 
@@ -47,3 +48,11 @@ async def text2bf(text : Text):
         print(e)
         result = "error"
     return {"result":result}
+
+@app.middleware('http')
+async def add_process_time_header(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    response.headers["X-Process-Time"] = str(process_time)
+    return response

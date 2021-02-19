@@ -40,7 +40,6 @@ io.on('connection',function(socket){
     socket.on('text_msg',function(msg){
         apiclient.text_post(msg).then((response) =>{
             titles = response.result;
-            console.log(response)
             console.log("title"+titles)
             io.emit('text_msg',titles);
         })
