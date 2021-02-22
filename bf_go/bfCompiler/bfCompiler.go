@@ -1,24 +1,19 @@
-package main
+package bfCompiler
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
 )
 
-func main() {
-	text := "+++++++++++++++++[>++++>+++++++>+++++++>++>++++>++>++++++>++++++>++++++>++++++>++>++++++>+++++++>+++<<<<<<<<<<<<<<-]>--.>--.>---.>--.>+++++.>--.>++++++.>+++.>+++++.>-.>--.>+++.>---.>-----.>++++++++++++."
-	bf := Compile_bf(text)
-	fmt.Println(bf)
-}
-
-func Compile_bf(code string) string {
-	var compiled_result string = ""
+// Compile parameter bfcode -> return compiledcode
+func Compile(code string) string {
+	var compiledResult string = ""
 	var memory [30000]int
 	for i := 0; i < 30000; i++ {
 		memory[i] = 0
 	}
-
 	ptr := 0
 	head := 0
 	slicedcode := strings.Split(code, "")
@@ -63,7 +58,12 @@ func Compile_bf(code string) string {
 				}
 			}
 		case ".":
-			compiled_result = compiled_result + string(rune(memory[ptr]))
+			compiledResult = compiledResult + string(rune(memory[ptr]))
+		case ",": //入力機構
+			stdin := bufio.NewScanner(os.Stdin)
+			stdin.Scan()
+			text := stdin.Text()
+			memory[ptr] = int(text[0])
 		case ">":
 			ptr++
 			if ptr > 30000 {
@@ -79,7 +79,6 @@ func Compile_bf(code string) string {
 		default:
 		}
 		head++
-
 	}
-	return compiled_result
+	return compiledResult
 }
