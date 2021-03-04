@@ -1,6 +1,6 @@
 var socketio = io();
 $(function(){
-    $('#text_form').submit(function(){
+    $('#text_form').submit(() => {
         if ($('#input_text').val() === ''){
             console.log('入力');
         }else{
@@ -9,7 +9,7 @@ $(function(){
         }
         return false;
     });
-    socketio.on('text_msg',function(msg){
+    socketio.on('text_msg',(msg) => {
     $('#text_msg').append($('<li>').text(msg));
     });
 });

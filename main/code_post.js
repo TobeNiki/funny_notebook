@@ -1,17 +1,20 @@
 const request = require('request-promise');
 
+var options = {
+    uri:"",
+    method:"POST",
+    headers:{
+        'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    },
+    body:{},
+    json:true,
+};
+
 exports.code_post = function (code){
-    var options = {
-        uri:"http://127.0.0.1:8000/bf_compiler",
-        method:"POST",
-        headers:{
-            'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-        },
-        body:{"bf": code},
-        json:true,
-    };
+    options.uri = "http://127.0.0.1:8000/bf_compiler";
+    options.body = {"bf":code};
     return new Promise((resolve,reject) => {request(options)
         .then((response) => {
             resolve(response);
@@ -23,17 +26,8 @@ exports.code_post = function (code){
 };
 
 exports.text_post = function (text){
-    var options = {
-        url:"http://127.0.0.1:8000/text_to_bfcode",
-        method:"POST",
-        headers:{
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-        },
-        body:{'text':text},
-        json:true,
-    };
+    options.uri = "http://127.0.0.1:8000/text_to_bfcode";
+    options.body = {"text":text};
     return new Promise((resolve,reject) => {request(options)
         .then((response) =>{
             console.log(response);
