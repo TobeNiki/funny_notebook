@@ -1,5 +1,5 @@
 #input_code{
-    background-color:aquamarine;
+    background-color:whitesmoke;
     color: skyblue;
     font-size:32;
 }
@@ -7,8 +7,59 @@
     color:skyblue;
     
 }
+#doc-name{
+    width: 217.484px;
+    background:transparent;
+    border-color: gainsboro;
+    border: 1px solid transparent;
+    font: normal 18px;
+}
+button{
+    color: black;
+    background: transparent;
+    border: 2px solid transparent;
+
+}
+
+#file-menu{
+    user-select: none;
+    max-height: 890px;
+    visibility: visible;
+    left: 64px;
+    top: 64px;
+    display: none;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.code-mark{
+    background-color: silver;
+    width: 50px;
+    border: lightgray;
+    position: relative;
+    left: 5px;
+    padding: 5px;
+    top: 35px;
+}
+.input-code{
+    color: #000000;
+    background-color: lightgray;
+    width: 600px;
+    border-color: lightgray;
+    border: 3px solid transparent;
+    font: normal 18px;
+    position: relative;
+    overflow: visible;
+    border-radius: 3%;
+    left: 55px;
+    top: 0px;
+}
+
 body {
-    background-color: azure;
+    background-color: white;
     color: #000000;
 }
 h1{

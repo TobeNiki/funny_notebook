@@ -9,6 +9,7 @@
   "author": "tobeniki",
   "license": "MIT",
   "dependencies": {
+    "@polymer/paper-button": "^3.0.1",
     "@popperjs/core": "^2.6.0",
     "body-parser": "^1.19.0",
     "date-utils": "^1.2.21",

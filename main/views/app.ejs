@@ -11,9 +11,64 @@
     <script type="module" src="./js/client.js"></script>
     <script type="module" src="./js/app_client.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/app_client.css">
+    
     <title>Funny Notebook</title>
 </head>
 <body>
+  <div class="funnynotebook">
+    <div class="top">
+      <div role="banner">
+        <div id="header" class="horizontal layout">
+          <div id="header-background"></div>
+          <div id="header-content">
+            <div id="header-logo"></div>
+            <div id="header-doc-toolbar" class="flex">
+              <div id="document-title">
+                <input id="doc-name" class="doc-name" aria-label="ノートブック名" maxlength="259" autocomplete="off" >
+              </div>
+              <button type="button" class="btn btn-light">ファイル</button>
+              <button type="button" class="btn btn-light">編集</button>
+              <button type="button" class="btn btn-light">表示</button>
+              <button type="button" class="btn btn-light">挿入</button>
+              <button type="button" class="btn btn-light">ランタイム</button>
+            </div>
+            <div id="header-right">           
+              <button type="button" class="btn btn-light" >コメント</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="file-memu" id="file-memu" role="menu" aria-haspopup="tree">
+    <div class="memu-item" >
+      <div class="memu-item-content"></div>
+    </div>
+  </div>
+
+  <div class="notebook">
+    <div class="code cell">
+      <div class="cell-toolbar">
+        <button>UP</button>
+        <button>DOWN</button>
+      </div>
+      <div class="main-code">
+        <button class="code-mark">@</button>
+        <form class="code-form">
+          <input class="input-code" autocomplete="off">
+        </form>
+      </div>
+      <div class="output">
+
+      </div>
+      <div class="add-cell">
+
+      </div>
+    </div>
+    
+  </div>
+
     <ul id="code_msg"></ul>
     <form id="code_form" action="#">
       <input id="input_code" autocomplete="off" /><button>Send</button>
